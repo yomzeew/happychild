@@ -62,13 +62,13 @@ function Home() {
         />
         </div>}
         {!showloader &&
+        <div className="w-full mt-12">
         <div className="w-full">
-        <div className="w-full">
-        <div className="w-full flex flex-col justify-center  items-center  bg-no-repeat md:h-screen h-96 bg-cover bg-hero-pattern bg-center object-contain px-5 ">
+        <div className="w-full flex flex-col justify-center  items-center  bg-no-repeat md:h-screen h-96 bg-cover bg-hero-pattern bg-center object-contain px-5  ">
           <div className="flex  justify-center flex-row items-center">
           <img src={arrowimage} className='md:w-64 w-32 h-auto'  />
         <div>
-        <div className="lg:text-7xl md:text-5xl text-3xl potta-one-regular text-white md:text-left text-center">Welcome to Creche Home</div>
+        <div className="lg:text-6xl md:text-5xl text-3xl potta-one-regular text-white md:text-left text-center">Welcome to Creche Home</div>
         <div className='text-white md:text-xl text-sm text-center fredoka mt-3'>Providing exceptional care and learning experiences for children aged 6 months and above</div>
 
         </div>
