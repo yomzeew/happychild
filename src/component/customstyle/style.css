@@ -1,0 +1,23 @@
+/* @font-face {
+    font-family:'Potta One' ;
+    src: url('../font/.potta-one-regular.tiff');
+} */
+.potta-one-regular {
+    font-family: "Potta One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+   
+  }
+.fredoka{
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+.borderradius{
+    border-top-left-radius: 500px;
+    border-top-right-radius: 300px;
+}
+  
