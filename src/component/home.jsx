@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './header'
 import arrowimage from './images/arrow.png'
 import superkid from './images/super-kid.svg'
@@ -9,13 +9,24 @@ import onesvg from './images/image 26.svg'
 import twosvg from './images/image 27.svg'
 import threesvg from './images/image 29.svg'
 import foursvg from './images/image 31.svg'
+import logopngwhite from './images/logopngwhite.png'
+import logopng from './images/logopng.png'
 import staffuser from './images/staffpic.png'
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 function Home() {
   const [value, setValue] = useState('');
-
+  const [showopacity,setshowopacity]=useState(false)
+  const [showloader,setshowloader]=useState(true)
+  const handleshowpre = () => {
+    setTimeout(() => {
+      setshowloader(false);
+    }, 3000); // 3000 milliseconds = 3 seconds
+  };
+  useEffect(()=>{
+    handleshowpre()
+  },[])
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -27,11 +38,32 @@ function Home() {
       },
     },
   });
+  const handleshow=(value)=>{
+    setshowopacity(value)
+  }
 
   return (
-    <div className="w-full">
-        <div className="fixed z-50 top-0 w-full bg-white"><Header/></div>
-        <div className="w-full mt-16">
+    <>
+    {showloader &&
+    <div className='w-full h-screen absolute bg-creamcolor flex justify-center items-center'>
+      <div> 
+        <img src={logopngwhite} className='w-24 h-24' />
+        <div className='potta-one-regular md:text-lg text-bluecolor text-xs'>HappyChild</div>
+        </div>
+      </div>
+      }
+    <div  className={`${showopacity&&'fixed'} w-full`}>
+      {showopacity &&
+      <div className='w-full h-screen absolute bg-slate-600 opacity-70'>
+      </div>}
+      {!showloader && <div className="fixed z-50 top-0 w-full bg-white">
+          <Header
+          overlay={(value)=>handleshow(value)}
+        />
+        </div>}
+        {!showloader &&
+        <div className="w-full">
+        <div className="w-full">
         <div className="w-full flex flex-col justify-center  items-center  bg-no-repeat md:h-screen h-96 bg-cover bg-hero-pattern bg-center object-contain px-5 ">
           <div className="flex  justify-center flex-row items-center">
           <img src={arrowimage} className='md:w-64 w-32 h-auto'  />
@@ -317,7 +349,9 @@ function Home() {
 
 
     
+    </div>}
     </div>
+    </>
   );
 }
 
