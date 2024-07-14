@@ -13,7 +13,7 @@ import logopngwhite from './images/logopngwhite.png'
 import logopng from './images/logopng.png'
 import staffuser from './images/staffpic.png'
 import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
+import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
 import { useState } from 'react';
 function Home() {
   const [value, setValue] = useState('');
@@ -30,11 +30,23 @@ function Home() {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  const CustomTextField = styled(TextField)({
-    '& .MuiOutlinedInput-root': {
-      backgroundColor: 'white',
-      '& fieldset': {
-        border: 'none',
+  const theme = createTheme({
+    components: {
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            backgroundColor: 'white', // Set background color to white
+            '& fieldset': {
+              borderColor: '#A6A6A6',
+            },
+            '&:hover fieldset': {
+              borderColor: 'primary.main',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'primary.main',
+            },
+          },
+        },
       },
     },
   });
@@ -68,7 +80,7 @@ function Home() {
           <div className="flex  justify-center flex-row items-center">
           <img src={arrowimage} className='md:w-64 w-32 h-auto'  />
         <div>
-        <div className="lg:text-6xl md:text-5xl text-3xl potta-one-regular text-white md:text-left text-center">Welcome to Creche Home</div>
+        <div className="lg:text-6xl md:text-5xl text-3xl potta-one-regular text-white  text-center">Welcome to Creche Home</div>
         <div className='text-white md:text-xl text-sm text-center fredoka mt-3'>Providing exceptional care and learning experiences for children aged 6 months and above</div>
 
         </div>
@@ -287,19 +299,23 @@ function Home() {
  <div className="bg-bgcream md:h-128 h-256 bg-cover w-full bg-no-repeat">
  <div className="potta-one-regular text-2xl md:text-4xl text-center pt-16 text-bluecolor">Get in touch</div>
  <div className="text-center md:text-xl  text-sm fredoka w-full px-5">Read reviews from our clients and see what they have to say about us</div>
+ <ThemeProvider theme={theme}>
   <div className="w-full md:flex gap-5 mt-3 px-5">
+ 
     <div className='w-full md:w-1/2 flex justify-center'>
-    <CustomTextField
+    
+    <TextField
         label="Your Name"
         variant="outlined"
         value={value}
         onChange={handleChange}
         fullWidth
+        color='primary'
       />
 
     </div>
     <div className='w-full md:w-1/2 flex justify-center md:mt-0 mt-5'>
-    <CustomTextField
+    <TextField
         label="Your Email"
         variant="outlined"
         value={value}
@@ -312,7 +328,7 @@ function Home() {
 
   </div>
   <div className='w-full flex justify-center px-5 mt-5'>
-    <CustomTextField
+    <TextField
         label="Your Subject"
         variant="outlined"
         value={value}
@@ -322,7 +338,7 @@ function Home() {
 
     </div>
     <div className='w-full flex justify-center px-5 mt-5'>
-    <CustomTextField
+    <TextField
         label="Your Message"
         variant="outlined"
         value={value}
@@ -333,6 +349,7 @@ function Home() {
       />
 
     </div>
+    </ThemeProvider>
     <div className="w-full flex justify-center">
     <button className="px-8 w-56 text-white h-12 active:bg-blue-900 hover:bg-blue-700 bg-bluecolor rounded-xl mt-5 fredoka">Submit</button>
     </div>

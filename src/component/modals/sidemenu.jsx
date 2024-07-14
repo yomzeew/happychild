@@ -17,7 +17,7 @@ const handleclose=()=>{
       <hr className="w-full border-b border-slate-800"/>
       </div>
    
-      <button className="px-8 text-white h-12 active:bg-blue-900 bg-bluecolor rounded-xl mt-5">Get Started</button>
+      <a href='/started'><button className="px-8 text-white h-12 active:bg-blue-900 bg-bluecolor rounded-xl mt-5">Get Started</button></a>
 
         </div>
   );

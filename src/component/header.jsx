@@ -31,7 +31,7 @@ function Header({overlay}) {
       <div><a href="/">About Us</a></div>
       <div><a href="/">Services</a></div>
       <div><a href="/">Contact Us</a></div>
-      <button className="px-8 text-white h-12 active:bg-blue-900 hover:bg-blue-700 bg-bluecolor rounded-xl">Get Started</button>
+      <a href='/started'><button className="px-8 text-white h-12 active:bg-blue-900 hover:bg-blue-700 bg-bluecolor rounded-xl">Get Started</button></a>
       
 
 

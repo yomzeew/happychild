@@ -22,7 +22,8 @@ module.exports = {
       backgroundImage: {
          'hero-pattern': "url('/src/component/images/Rectangle1.png')",
          'bgcream':"url('/src/component/images/bgground.svg')",
-         'bgcreamtwo':"url('/src/component/images/bggroundtwo.svg')"
+         'bgcreamtwo':"url('/src/component/images/bggroundtwo.svg')",
+         'bgside':"url('/src/component/images/loginpage.svg')",
         // 'herotwo-pattern': "url('/src/component/images/footerbg.png')",
         // 'herothree-pattern': "url('/src/component/images/bg6.jpg')",
       },
