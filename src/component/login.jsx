@@ -21,10 +21,10 @@ const Login=()=>{
                     
                 </div>
                 <div className='flex flex-col px-5 md:w-1/2 w-full md:py-10 py-5'>
-                    <div className='fredoka text-lg flex md:justify-end justify-center'>Don’t have an account? <span>Sign up</span></div>
+                    <div className='fredoka text-lg flex md:justify-end justify-center'>Don’t have an account?&nbsp;<span className='text-bluecolor'><a href='/register'>Sign up</a></span></div>
                     <div className='flex-1 flex flex-col justify-center items-center md:mt-0 mt-5'>
                         <div>
-                            <div className='text-2xl text-creamcolor potta-one-regular text-center'>Login</div>
+                            <div className='text-4xl text-creamcolor potta-one-regular text-center'>Login</div>
                             <div className="text-sm fredoka text-center">Enter your correct details to login to your account</div>
                         </div>
                         <div className='md:w-1/2 mt-10 w-5/6'>
@@ -50,7 +50,7 @@ const Login=()=>{
                                 setpassword(event.target.value);
                               }}
                              fullWidth  
-                             security 
+                             type='password'
                             />
 
                         </div>
