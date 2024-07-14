@@ -6,11 +6,17 @@ import logouticon from './images/logouticon.svg'
 import websiteicon from './images/websiteicon.svg'
 import calendaricon from './images/calendaricon.svg'
 import { Navigations, Navigationsmobile } from "./dashboardcomponent/navigation"
+import DashboardHome from "./dashboardcomponent/dashboardhome"
 
 const Dashboard=()=>{
     const [onchangewidth,setonchangewidth]=useState(false)
+    const [showpage,setshowpage]=useState('dashboard')
     const handlewidth=()=>{
         setonchangewidth(!onchangewidth)
+    }
+    const handleshowpage=(value)=>{
+        console.log(value)
+        setshowpage(value)
     }
     return(
         <>
@@ -23,6 +29,7 @@ const Dashboard=()=>{
                 </div>
                 <div className="mt-10">
                 <Navigations
+                handleshowpage={(value)=>handleshowpage(value)}
                 />
 
                 </div>
@@ -31,7 +38,7 @@ const Dashboard=()=>{
             </div>
 
             </div>
-            <div className={`md:hidden block ${onchangewidth?'w-56':'w-16'} bg-slate-100 h-screen px-3 cursor-s-resize`}>
+            <div className={`md:hidden block absolute ${onchangewidth?'w-56':'w-16'} bg-slate-100 h-screen px-3 cursor-s-resize`}>
                 <div onClick={handlewidth} className={`absolute top-1/2  ${onchangewidth?'left-52':'left-12'} `}><i className={`text-slate-400 opacity-70 fa fa-2x ${onchangewidth?'fa-arrow-circle-o-left':'fa-arrow-circle-o-right'}  `}></i></div>
             <div>
             <div className="flex items-center gap-3 pt-5">
@@ -56,11 +63,9 @@ const Dashboard=()=>{
 
             </div>
 
-            
-            <div style={{backgroundColor:'#F7F7F7'}} className="flex-1  h-screen">
-                main
+            <div style={{backgroundColor:'#F7F7F7'}} className="md:flex-1 md:ml-0 ml-16 w-full h-screen">
+               {showpage==='dashboard' &&<DashboardHome/>}
             </div>
-
         </div>
         </>
 

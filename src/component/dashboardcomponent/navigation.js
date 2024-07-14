@@ -4,17 +4,18 @@ import profileicon from '../images/profileicon.svg'
 import logouticon from '../images/logouticon.svg'
 import websiteicon from '../images/websiteicon.svg'
 import calendaricon from '../images/calendaricon.svg'
-export const Navigations=({handlenavigate})=>{
+export const Navigations=(props)=>{
 const [activelink,setactivelink]=useState('dashboard')
 const activelinkstyle="bg-blue-300"
 const defaultlinkstyle="bg-slate-300"
 const handlenavclick=(value)=>{
     setactivelink(value)
+    props.handleshowpage(value)
 
 }
     return(
         <div>
-           <a href="#" onClick={()=>handlenavclick('dashbaord')}><div className={`flex gap-3 items-center ${activelink==='dashbaord'?activelinkstyle:defaultlinkstyle}  px-3 py-3 rounded-lg`}>
+           <a href="#" onClick={()=>handlenavclick('dashboard')}><div className={`flex gap-3 items-center ${activelink==='dashboard'?activelinkstyle:defaultlinkstyle}  px-3 py-3 rounded-lg`}>
                     <img src={dashbaordicon} />
                     <div className="fredoka md:text-sm text-bluecolor text-xs">Dashboard</div>
                     
@@ -57,7 +58,7 @@ export const Navigationsmobile=(props)=>{
     }
         return(
             <div>
-                    <a href="#" onClick={()=>handlenavclick('dashbaord')}><div className={`flex gap-3 items-center ${activelink==='dashbaord'?activelinkstyle:defaultlinkstyle}  px-3 py-3 rounded-lg`}>
+                    <a href="#" onClick={()=>handlenavclick('dashboard')}><div className={`flex gap-3 items-center ${activelink==='dashboard'?activelinkstyle:defaultlinkstyle}  px-3 py-3 rounded-lg`}>
                     <img src={dashbaordicon} />
                     {props.onchangewidth &&<div className="fredoka md:text-sm text-bluecolor text-xs">Dashboard</div>}
                     
