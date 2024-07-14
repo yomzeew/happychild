@@ -17,8 +17,8 @@ const Login=()=>{
        
         <div className="w-full h-screen">
             <div className='flex md:flex-row flex-col'>
-                <div className='md:h-screen h-72 bg-cover bg-center bg-no-repeat bg-bgside md:w-1/2 w-full'>
-                    
+            <div className='md:h-screen h-72 bg-cover bg-center bg-no-repeat bg-bgside md:w-1/2 w-full py-5'>
+                    <div className='text-white text-lg h-12 bg-slate-700 opacity-70 px-5 flex items-center'><a className='flex items-center' href='/'><i className='fa fa-2x fa-home text-creamcolor'></i>&nbsp;Go to Home</a></div>
                 </div>
                 <div className='flex flex-col px-5 md:w-1/2 w-full md:py-10 py-5'>
                     <div className='fredoka text-lg flex md:justify-end justify-center'>Don’t have an account?&nbsp;<span className='text-bluecolor'><a href='/register'>Sign up</a></span></div>
@@ -32,6 +32,7 @@ const Login=()=>{
                              label="Email Address"
                              variant="outlined"
                              value={Email}
+                             
                              onChange={(event) => {
                                 setEmail(event.target.value);
                               }}
