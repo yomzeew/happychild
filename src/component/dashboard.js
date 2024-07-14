@@ -63,7 +63,7 @@ const Dashboard=()=>{
 
             </div>
 
-            <div style={{backgroundColor:'#F7F7F7'}} className="md:flex-1 md:ml-0 ml-16 w-full h-screen">
+            <div style={{backgroundColor:'#F7F7F7'}} className="md:flex-1 md:ml-0 ml-16 w-5/6 h-screen">
                {showpage==='dashboard' &&<DashboardHome/>}
             </div>
         </div>
