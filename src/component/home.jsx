@@ -15,6 +15,8 @@ import staffuser from './images/staffpic.png'
 import TextField from '@mui/material/TextField';
 import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
 import { useState } from 'react';
+import Loader from './preloader/loader';
+import Footer from './footer';
 function Home() {
   const [value, setValue] = useState('');
   const [showopacity,setshowopacity]=useState(false)
@@ -58,10 +60,7 @@ function Home() {
     <>
     {showloader &&
     <div className='w-full h-screen absolute bg-creamcolor flex justify-center items-center'>
-      <div> 
-        <img src={logopngwhite} className='w-24 h-24' />
-        <div className='potta-one-regular md:text-lg text-bluecolor text-xs'>HappyChild</div>
-        </div>
+      <Loader/>
       </div>
       }
     <div  className={`${showopacity&&'fixed'} w-full`}>
@@ -359,9 +358,7 @@ function Home() {
      
 
   </div>
-  <div className="h-96 w-full bg-bluecolor">
-
-  </div>
+  <Footer/>
  
 
 

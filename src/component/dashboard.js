@@ -55,9 +55,6 @@ const Dashboard=()=>{
                 onchangewidth={onchangewidth}
                 />
                 </div>
-               
-           
-
             </div>
            
 
