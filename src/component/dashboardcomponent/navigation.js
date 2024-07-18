@@ -54,10 +54,11 @@ export const Navigationsmobile=(props)=>{
     const defaultlinkstyle="bg-slate-300"
     const handlenavclick=(value)=>{
         setactivelink(value)
+        props.handleshowpage(value)
     
     }
         return(
-            <div>
+            <div className="relative z-50">
                     <a href="#" onClick={()=>handlenavclick('dashboard')}><div className={`flex gap-3 items-center ${activelink==='dashboard'?activelinkstyle:defaultlinkstyle}  px-3 py-3 rounded-lg`}>
                     <img src={dashbaordicon} />
                     {props.onchangewidth &&<div className="fredoka md:text-sm text-bluecolor text-xs">Dashboard</div>}

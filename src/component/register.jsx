@@ -70,6 +70,7 @@ const Register=()=>{
         }
       };
       const statusbarProps = {
+        title:'Congratulations',
         message: 'Successfully Registered on Happychild Platform',
         buttondetails: 'Continue to Login',
         routename:'/started'
