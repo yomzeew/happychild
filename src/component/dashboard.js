@@ -12,6 +12,7 @@ import { emailstatus, sendotp, verifyotp } from "../endpoints/apiurl"
 import AnimteModal from "./modals/animateModal"
 import Warningstatus from "./modals/warningstatus"
 import OtpInput from "./modals/otpmodal"
+import Profile from "./dashboardcomponent/profile"
 
 const Dashboard=()=>{
     const [onchangewidth,setonchangewidth]=useState(false)
@@ -108,7 +109,7 @@ const Dashboard=()=>{
         </>
         
         :<div className="w-screen h-screen flex">
-            <div className="md:block hidden w-1/6 h-screen bg-slate-50 px-5 ">
+            <div className="md:block hidden w-1/6 h-screen bg-slate-50 px-5 relative z-50">
             <div>
                 <div className="pt-5">
                     <img src={logopng} className="w-16 h-auto object-fit"/>
@@ -125,7 +126,7 @@ const Dashboard=()=>{
             </div>
 
             </div>
-            <div className={`md:hidden block  z-40 absolute ${onchangewidth?'w-56':'w-16'} bg-slate-100 h-screen px-3 cursor-s-resize`}>
+            <div className={`md:hidden block  z-50 absolute ${onchangewidth?'w-56':'w-16'} bg-slate-100 h-screen px-3 cursor-s-resize`}>
                 <div onClick={handlewidth} className={`absolute top-1/2  ${onchangewidth?'left-52':'left-12'} `}><i className={`text-slate-400 opacity-70 fa fa-2x ${onchangewidth?'fa-arrow-circle-o-left':'fa-arrow-circle-o-right'}  `}></i></div>
             <div>
             <div className="flex items-center gap-3 pt-5">
@@ -151,6 +152,7 @@ const Dashboard=()=>{
             <div style={{backgroundColor:'#F7F7F7'}} className="md:flex-1 md:ml-0 ml-16 w-5/6 h-screen">
             {onchangewidth &&<div onClick={handlewidth} className="z-30 absolute w-full h-screen bg-slate-400 opacity-70"></div>}
                {showpage==='dashboard' &&<DashboardHome/>}
+               {showpage==='profile' &&<Profile/>}
             </div>
         </div>
 }

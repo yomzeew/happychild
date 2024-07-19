@@ -21,8 +21,6 @@ function App() {
     }
   })
   return (
-    
-<ChakraProvider theme={theme}>
     <Router >
     <AuthProvider>
       <IdleTimer timeout={600000} />
@@ -31,12 +29,11 @@ function App() {
         <Route exact path='/started' element={<Login/>} />
         <Route exact path='/register' element={<Register/>} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute> } />
-        
-       
+    
       </Routes>
       </AuthProvider>
     </Router>
-  </ChakraProvider>
+  
  
    
 
