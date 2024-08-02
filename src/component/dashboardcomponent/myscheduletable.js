@@ -6,22 +6,40 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import axios from 'axios';
+import {useState,useEffect} from 'react'
+import { getbookbyparentid } from '../../endpoints/apiurl';
+import { convertDateFormat } from '../services/timerange';
 
-function createData(id,name, dateofappoint, checkin, checkout, nameofcaregiver,phonenumber) {
-  return {id, name, dateofappoint, checkin, checkout, nameofcaregiver,phonenumber };
-}
-
-const rows = [
-  createData(1,'Ade tola', '1st June 2021', '10:00am', '11:00am', 'Olatayo Seun','23481773839'),
-  createData(2,'Ade tola', '1st June 2021', '10:00am', '11:00am', 'Olatayo Seun','23481773839'),
-  createData(3,'Ade tola', '1st June 2021', '10:00am', '11:00am', 'Olatayo Seun','23481773839'),
-  createData(4,'Ade tola', '1st June 2021', '10:00am', '11:00am', 'Olatayo Seun','23481773839'),
-  createData(5,'Ade tola', '1st June 2021', '10:00am', '11:00am', 'Olatayo Seun','23481773839'),
-  createData(6,'Ade tola', '1st June 2021', '10:00am', '11:00am', 'Olatayo Seun','23481773839'),
-
-];
 
 export default function BasicTable() {
+  const [errormsg,seterrormsg]=useState('')
+  const [rows,setrows]=useState([])
+  const getrowdata=async()=>{
+    try{
+      const token = localStorage.getItem('token');
+      if (!token) {
+          seterrormsg('Token not found');
+          return;
+      }
+      const response=await axios.post(getbookbyparentid,null,{
+        headers:{
+          'authorization':`Bearer ${token}`
+        }
+      })
+      setrows(response.data.data)
+      console.log(response.data.data)
+
+
+    }
+    catch(error){
+
+    }
+  }
+  useEffect(()=>{
+    getrowdata()
+
+  },[])
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -32,8 +50,11 @@ export default function BasicTable() {
             <TableCell align="right">Date of Appointment</TableCell>
             <TableCell align="right">Check In</TableCell>
             <TableCell align="right">Check Out</TableCell>
-            <TableCell align="right">Name of Care Giver</TableCell>
+            <TableCell align="right">No of Hours</TableCell>
             <TableCell align="right">Phone Number</TableCell>
+            <TableCell align="right">Amount(GBP)</TableCell>
+            <TableCell align="right">No of Days</TableCell>
+            <TableCell align="right">Payment Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -44,13 +65,16 @@ export default function BasicTable() {
             >
                 <TableCell align="right">{row.id}</TableCell>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.child_fullname}
               </TableCell>
-              <TableCell align="right">{row.dateofappoint}</TableCell>
-              <TableCell align="right">{row.checkin}</TableCell>
-              <TableCell align="right">{row.checkout}</TableCell>
-              <TableCell align="right">{row.nameofcaregiver}</TableCell>
-              <TableCell align="right">{row.phonenumber}</TableCell>
+              <TableCell align="right">{convertDateFormat(row.created_at)}</TableCell>
+              <TableCell align="right">{convertDateFormat(row.checkin)}</TableCell>
+              <TableCell align="right">{convertDateFormat(row.checkout)}</TableCell>
+              <TableCell align="right">{row.timeslots.length}</TableCell>
+              <TableCell align="right">{row.phonenumber||'null'}</TableCell>
+              <TableCell align="right">{row.amount}</TableCell>
+              <TableCell align="right">{row.schedulepattern}</TableCell>
+              <TableCell align="right">{row.payment_status===0?<span className='text-red-500'>Not yet Paid</span>:<span>Paid</span>}</TableCell>
             </TableRow>
           ))}
         </TableBody>

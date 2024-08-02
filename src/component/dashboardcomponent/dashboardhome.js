@@ -4,7 +4,7 @@ import DataTable from './myscheduletable'
 const DashboardHome=()=>{
     return(
         <>
-        <div className="w-full h-full scrollbar md:overflow-x-hidden">
+        <div className="w-full h-full overflow-y-scroll scrollbar md:overflow-x-hidden">
             <div className="px-5 flex mt-10 justify-start">
                 <input
                 placeholder="...Searh"

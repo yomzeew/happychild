@@ -5,8 +5,15 @@ import { useNavigate } from 'react-router-dom';
 function Statusbar(props) {
     const navigate=useNavigate()
    const handleroute=()=>{
-    const routname=props.routename
-    navigate(routname)
+    if(props.routname){
+        const routname=props.routename
+        navigate(routname)
+
+    }else{
+        props.handleclose()
+
+    }
+   
 
    } 
   return (

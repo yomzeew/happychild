@@ -1,12 +1,12 @@
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
-import { loginurl } from '../endpoints/apiurl';
 import axios from 'axios';
-import { useAuth } from '../Authroute/Auth';
+import { useAuth } from '../../Authroute/Auth';
 import { useHistory, useNavigate } from 'react-router-dom';
-import Loader from './preloader/loader';
-const Login=()=>{
+import Loader from '../preloader/loader';
+import { loginadmin } from '../../endpoints/apiurl';
+const LoginAdmin=()=>{
     const [Email,setEmail]=useState('') 
     const [password,setpassword]=useState('')
     const [emailerror,setemailerror]=useState(false)
@@ -43,7 +43,7 @@ const Login=()=>{
         setpreloader(true);
         const data = { email: Email, password: password };
         
-        const response = await axios.post(loginurl, data);
+        const response = await axios.post(loginadmin, data);
         
         // Ensure response and response.data are defined before accessing response.data.auth
         if (response && response.data && response.data.auth === true) {
@@ -71,7 +71,7 @@ const Login=()=>{
                     <div className='fredoka text-lg flex md:justify-end justify-center'>Don’t have an account?&nbsp;<span className='text-bluecolor'><a href='/register'>Sign up</a></span></div>
                     <div className='flex-1 flex flex-col justify-center items-center md:mt-0 mt-5'>
                         <div>
-                            <div className='text-4xl text-creamcolor potta-one-regular text-center'>Login</div>
+                            <div className='text-4xl text-creamcolor potta-one-regular text-center'>Admin Login</div>
                             <div className="text-sm fredoka text-center">Enter your correct details to login to your account</div>
                         </div>
                         <div className='md:w-1/2 mt-10 w-5/6'>
@@ -128,4 +128,4 @@ const Login=()=>{
 
     )
 }
-export default Login
+export default LoginAdmin

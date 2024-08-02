@@ -7,6 +7,7 @@ import { ChakraProvider,extendTheme  } from '@chakra-ui/react'
 import { AuthProvider } from "./Authroute/Auth";
 import ProtectedRoute from "./Authroute/protectedRoutes";
 import IdleTimer from "./Authroute/IdleTimer";
+import LoginAdmin from "./component/Admin/loginadmin";
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route exact path='/started' element={<Login/>} />
         <Route exact path='/register' element={<Register/>} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute> } />
+        <Route path="/adminlogin" element={<LoginAdmin/>} />
     
       </Routes>
       </AuthProvider>
