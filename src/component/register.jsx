@@ -1,13 +1,10 @@
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
-import { styled } from '@mui/material/styles';
 import { useState} from 'react';
-import { loginurl, register } from '../endpoints/apiurl';
+import { register } from '../endpoints/apiurl';
 import axios from 'axios';
 import { useAuth } from '../Authroute/Auth';
-import { useHistory, useNavigate } from 'react-router-dom';
 import Loader from './preloader/loader';
-import { Icon } from '@mui/material';
 import Statusbar from './modals/statusbar';
 import AnimteModal from './modals/animateModal';
 const Register=()=>{

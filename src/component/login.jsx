@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { loginurl } from '../endpoints/apiurl';
 import axios from 'axios';
 import { useAuth } from '../Authroute/Auth';
-import { useHistory, useNavigate } from 'react-router-dom';
 import Loader from './preloader/loader';
 const Login=()=>{
     const [Email,setEmail]=useState('') 
@@ -109,7 +108,7 @@ const Login=()=>{
 
                         </div>
                         <div className='md:w-1/2 mt-1  w-5/6'>
-                         <div className='w-full text-right'>Forget Password?</div>
+                         <div className='w-full text-right cursor-pointer'>Forget Password?</div>
                         </div>
                         <div className='md:w-1/2 mt-5  w-5/6'>
                         <button onClick={handlesubmit} className="px-8 w-full text-white h-12 active:bg-blue-900 hover:bg-blue-700 bg-bluecolor rounded-xl shadow-md shadow-blue-950">Login</button>

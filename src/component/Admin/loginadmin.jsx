@@ -1,9 +1,7 @@
 import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../Authroute/Auth';
-import { useHistory, useNavigate } from 'react-router-dom';
 import Loader from '../preloader/loader';
 import { loginadmin } from '../../endpoints/apiurl';
 const LoginAdmin=()=>{
