@@ -8,6 +8,8 @@ import { AuthProvider } from "./Authroute/Auth";
 import ProtectedRoute from "./Authroute/protectedRoutes";
 import IdleTimer from "./Authroute/IdleTimer";
 import LoginAdmin from "./component/Admin/loginadmin";
+import ForgetPassword from "./component/forgotpass";
+import DashboardAdmin from "./component/Admin/dashboardAdmin";
 
 
 
@@ -31,8 +33,10 @@ function App() {
         <Route exact path='/' element={<Home/>} />
         <Route exact path='/started' element={<Login/>} />
         <Route exact path='/register' element={<Register/>} />
+        <Route exact path="/forgotpass" element={<ForgetPassword/>} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute> } />
         <Route path="/adminlogin" element={<LoginAdmin/>} />
+        <Route path="/dashboardadmin" element={<ProtectedRoute><DashboardAdmin /></ProtectedRoute> } />
     
       </Routes>
       </AuthProvider>

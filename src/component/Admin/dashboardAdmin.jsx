@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react"
-import logopng from './images/logopng.png'
-import { Navigations, Navigationsmobile } from "./dashboardcomponent/navigation"
-import DashboardHome from "./dashboardcomponent/dashboardhome"
+import logopng from '../images/logopng.png'
+import { Navigations, Navigationsmobile } from "../dashboardcomponent/navigation"
+import DashboardHome from "../dashboardcomponent/dashboardhome"
 import axios from "axios"
-import { emailstatus, sendotp, verifyotp } from "../endpoints/apiurl"
-import AnimteModal from "./modals/animateModal"
-import Warningstatus from "./modals/warningstatus"
-import OtpInput from "./modals/otpmodal"
+import { emailstatus, sendotp, verifyotp } from "../../endpoints/apiurl"
+import AnimteModal from "../modals/animateModal"
+import Warningstatus from "../modals/warningstatus"
+import OtpInput from "../modals/otpmodal"
 import Profile from "./dashboardcomponent/profile"
 import Appointment from "./dashboardcomponent/appointment"
 
-const Dashboard=()=>{
+const DashboardAdmin=()=>{
     const [onchangewidth,setonchangewidth]=useState(false)
     const [showpage,setshowpage]=useState('dashboard')
     const [showstatus,setshowstatus]=useState(false)
@@ -157,4 +157,4 @@ const Dashboard=()=>{
 
     )
 }
-export default Dashboard
+export default DashboardAdmin

@@ -5,6 +5,7 @@ import { loginurl } from '../endpoints/apiurl';
 import axios from 'axios';
 import { useAuth } from '../Authroute/Auth';
 import Loader from './preloader/loader';
+import { useNavigate } from 'react-router-dom';
 const Login=()=>{
     const [Email,setEmail]=useState('') 
     const [password,setpassword]=useState('')
@@ -13,8 +14,7 @@ const Login=()=>{
     const [errormsg,seterrormsg]=useState('')
     const [preloader,setpreloader]=useState(false)
     const { login,isAuthenticated } = useAuth();
-   
-  
+  const navigate=useNavigate()
     const validateEmail = (email) => {
       const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,}$/;
       return emailRegex.test(email);
@@ -57,6 +57,10 @@ const Login=()=>{
         setpreloader(false);
       }
     };
+
+    const handleNav=()=>{
+      navigate('/forgotpass')
+    }
     
     return(
        <>
@@ -108,7 +112,7 @@ const Login=()=>{
 
                         </div>
                         <div className='md:w-1/2 mt-1  w-5/6'>
-                         <div className='w-full text-right cursor-pointer'>Forget Password?</div>
+                         <div onClick={handleNav} className='w-full text-right cursor-pointer'>Forget Password?</div>
                         </div>
                         <div className='md:w-1/2 mt-5  w-5/6'>
                         <button onClick={handlesubmit} className="px-8 w-full text-white h-12 active:bg-blue-900 hover:bg-blue-700 bg-bluecolor rounded-xl shadow-md shadow-blue-950">Login</button>

@@ -23,7 +23,7 @@ function Header({overlay}) {
        <div className="h-16  px-5 flex items-center flex-row justify-between fredoka ">
      <div className="font-bold text-xl w-1/3">
       <img src={logopng} className='w-10 h-auto object-contain' />
-      <div className='potta-one-regular md:text-sm text-bluecolor text-xs'>HappyChild</div>
+      <div className='potta-one-regular md:text-sm text-bluecolor text-xs'>AppyChild</div>
      </div>
      <div className=" w-2/3">
      <div className=" flex flex-row justify-between items-center ">
@@ -52,7 +52,7 @@ function Header({overlay}) {
        <div className=" h-16 flex flex-row items-center justify-between px-5">
        <div className="font-bold text-xl w-1/3">
        <img src={logopng} className='w-10 h-auto object-contain' />
-       <div className='potta-one-regular md:text-sm text-bluecolor text-xs'>HappyChild</div>
+       <div className='potta-one-regular md:text-sm text-bluecolor text-xs'>AappyChild</div>
      </div>
      <div>
       <i onClick={handleClickshow} className="fa fa-bars text-bluecolor"></i>
