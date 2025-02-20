@@ -7,8 +7,8 @@ import { emailstatus, sendotp, verifyotp } from "../../endpoints/apiurl"
 import AnimteModal from "../modals/animateModal"
 import Warningstatus from "../modals/warningstatus"
 import OtpInput from "../modals/otpmodal"
-import Profile from "./dashboardcomponent/profile"
-import Appointment from "./dashboardcomponent/appointment"
+import Profile from "../dashboardcomponent/profile"
+import Appointment from "../dashboardcomponent/appointment"
 
 const DashboardAdmin=()=>{
     const [onchangewidth,setonchangewidth]=useState(false)

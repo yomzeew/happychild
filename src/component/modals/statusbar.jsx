@@ -6,7 +6,8 @@ function Statusbar(props) {
     const navigate=useNavigate()
    const handleroute=()=>{
     if(props.routname){
-        const routname=props.routename
+        console.log(props.routname)
+        const routname=props.routname
         navigate(routname)
 
     }else{
