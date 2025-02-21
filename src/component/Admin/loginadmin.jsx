@@ -11,7 +11,7 @@ const LoginAdmin=()=>{
     const [passworderror,setpassworderror]=useState(false)
     const [errormsg,seterrormsg]=useState('')
     const [preloader,setpreloader]=useState(false)
-    const { login,isAuthenticated } = useAuth();
+    const { loginAdmin } = useAuth();
    
   
     const validateEmail = (email) => {
@@ -45,7 +45,7 @@ const LoginAdmin=()=>{
         
         // Ensure response and response.data are defined before accessing response.data.auth
         if (response && response.data && response.data.auth === true) {
-          login(response.data.token);
+          loginAdmin(response.data.token);
           
 
         } 

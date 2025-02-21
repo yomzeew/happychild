@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react"
 import logopng from '../images/logopng.png'
-import { Navigations, Navigationsmobile } from "../dashboardcomponent/navigation"
-import DashboardHome from "../dashboardcomponent/dashboardhome"
+import { NavigationsAdmin,  NavigationsmobileAdmin } from "./navigationadmin"
 import axios from "axios"
 import { emailstatus, sendotp, verifyotp } from "../../endpoints/apiurl"
 import AnimteModal from "../modals/animateModal"
 import Warningstatus from "../modals/warningstatus"
 import OtpInput from "../modals/otpmodal"
-import Profile from "../dashboardcomponent/profile"
-import Appointment from "../dashboardcomponent/appointment"
+import Settings from "./settings"
+import BookingRecord from "./bookingRecords"
+import DashboardHomeAdmin from "./dashboard"
+
 
 const DashboardAdmin=()=>{
     const [onchangewidth,setonchangewidth]=useState(false)
@@ -112,7 +113,7 @@ const DashboardAdmin=()=>{
                 <div className='potta-one-regular md:text-sm text-bluecolor text-xs'>HappyChild</div>
                 </div>
                 <div className="mt-10">
-                <Navigations
+                <NavigationsAdmin
                 handleshowpage={(value)=>handleshowpage(value)}
                 />
 
@@ -135,7 +136,7 @@ const DashboardAdmin=()=>{
 
             </div>
             <div className="pt-5">  
-                <Navigationsmobile
+                <NavigationsmobileAdmin
                 onchangewidth={onchangewidth}
                 handleshowpage={(value)=>handleshowpage(value)}
                 />
@@ -147,9 +148,9 @@ const DashboardAdmin=()=>{
 
             <div style={{backgroundColor:'#F7F7F7'}} className="md:flex-1 lg:ml-56 md:ml-44 ml-16 w-5/6 h-screen">
             {onchangewidth &&<div onClick={handlewidth} className="z-30 absolute w-full h-screen bg-slate-400 opacity-70"></div>}
-               {showpage==='dashboard' &&<DashboardHome/>}
-               {showpage==='profile' &&<Profile/>}
-               {showpage==='calendar' && <Appointment/>}
+               {showpage==='dashboard' &&<DashboardHomeAdmin/>}
+               {showpage==='booking' &&<BookingRecord/>}
+               {showpage==='settings' && <Settings/>}
             </div>
         </div>
 }

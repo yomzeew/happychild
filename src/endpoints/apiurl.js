@@ -1,4 +1,4 @@
-const BaseURi='http://localhost:3300/api/v1'
+const BaseURi='http://localhost:3300/backend/api/v1'
 //  const BaseURi='https://happychildbackend.onrender.com/api/v1'
 export const loginurl=`${BaseURi}/login`
 export const register=`${BaseURi}/register`

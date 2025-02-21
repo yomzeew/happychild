@@ -12,6 +12,7 @@ import foursvg from './images/image 31.svg'
 import logopngwhite from './images/logopngwhite.png'
 import logopng from './images/logopng.png'
 import staffuser from './images/staffpic.png'
+import testimonyimage from './images/testimony.png'
 import TextField from '@mui/material/TextField';
 import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
 import { useState } from 'react';
@@ -102,13 +103,15 @@ function Home() {
           <div className="">
           <div  className="potta-one-regular text-creamcolor text-lg">About Us</div>
           <div className="text-justify md:w-96">
-          Lorem ipsum dolor sit amet consectetur. 
-          In adipiscing aliquet nullam accumsan 
-          fermentum eleifend hendrerit. Ultrices et 
-          sagittis lectus pulvinar nam. Ornare sollicitudin 
-          elementum sed in amet risus in amet. Ultrices malesuada 
-          felis euismod massa tincidunt est justo. Diam orci 
-          turpis sapien id purus in nisl proin nulla.
+          AppyChild is a child day care center dedicated to providing a safe, 
+          nurturing, and stimulating environment for young children. 
+          Their mission is to support the overall development of children 
+          through a balanced program that encourages curiosity, creativity, and confidence. 
+          The center's caring and experienced team is committed 
+          to offering age-appropriate activities that promote emotional, social, cognitive,
+          and physical growth. AppyChild values strong partnerships with parents and maintains 
+          open communication to ensure each child's success. The facility is designed 
+          to be a welcoming and engaging space where children can learn and thrive.
           </div>
           <button className="px-8 w-44 text-white h-12 active:bg-blue-900 hover:bg-blue-700 bg-bluecolor rounded-xl mt-5 fredoka">Read more</button>
 
@@ -143,23 +146,28 @@ function Home() {
    <Card
    src={cardimage}
    title="Childcare"
-   content="Lorem ipsum dolor sit amet consectetur. 
-   In adipiscing aliquet nullam accumsan fermentum e
-   leifend hendrerit. Ultrices et sagittis lectus pulvinar nam. "
+   content="AppyChild provides a safe, nurturing environment where children
+    can learn and grow through play and exploration. Our experienced staff
+     offers age-appropriate programs that support each child's development.
+     We value parental involvement 
+   and are dedicated to fostering a strong foundation for lifelong learning and well-being. "
    />
     <Card
    src={cardimage}
    title="Babysitting"
-   content="Lorem ipsum dolor sit amet consectetur. 
-   In adipiscing aliquet nullam accumsan fermentum e
-   leifend hendrerit. Ultrices et sagittis lectus pulvinar nam. "
+   content="Reliable and caring babysitting services that ensure your child's safety and happiness.
+    Our experienced babysitters provide engaging activities, personalized attention, 
+    and a nurturing environment, giving you peace of mind while you're away.
+    Whether for a few hours or a full day, your child will be in safe, loving hands."
    />
     <Card
    src={cardimage}
     title="Nanny service"
-   content="Lorem ipsum dolor sit amet consectetur. 
-   In adipiscing aliquet nullam accumsan fermentum e
-   leifend hendrerit. Ultrices et sagittis lectus pulvinar nam. "
+   content="Our professional nanny service offers personalized, attentive care
+    for your child in the comfort of your home. Experienced and trustworthy 
+    nannies provide enriching activities, routine support, and loving care,
+     ensuring your child’s needs are 
+   met while you manage your day. Reliable, flexible, and dedicated to your family’s well-being. "
    />
   
     
@@ -178,7 +186,7 @@ function Home() {
     </div>
     <div className="w-6 h-6 rounded-full text-white bg-bluecolor -mt-5 potta-one-regular items-center flex justify-center">01</div>
     <div className="font-bold potta-one-regular text-bluecolor text-sm">Visit website</div>
-    <div className='text-center md:text-lg text-xs'>Lorem ipsum dolor sit amet consectetur. sit amet consectetur</div>
+    <div className='text-center text-xs'>Register and login on our Platform to make booking</div>
   </div>
 
   <div className="md:w-36 w-full flex flex-col items-center">
@@ -187,7 +195,7 @@ function Home() {
     </div>
     <div className="w-6 h-6 rounded-full text-white bg-bluecolor -mt-5 potta-one-regular items-center flex justify-center">02</div>
     <div className="font-bold potta-one-regular text-bluecolor text-center text-sm">Explore programme</div>
-    <div className='text-center md:text-lg text-xs'>Lorem ipsum dolor sit amet consectetur. sit amet consectetur</div>
+    <div className='text-center  text-xs'>Check Our Website for our services</div>
   </div>
 
   <div className="md:w-36 w-full flex flex-col items-center">
@@ -196,7 +204,7 @@ function Home() {
     </div>
     <div className="w-6 h-6 rounded-full text-white bg-bluecolor -mt-5 potta-one-regular items-center flex justify-center">03</div>
     <div className="font-bold potta-one-regular text-bluecolor text-center text-sm">Book appointment</div>
-    <div className='text-center md:text-lg text-xs'>Lorem ipsum dolor sit amet consectetur. sit amet consectetur</div>
+    <div className='text-center text-xs'>Make Booking and Payment</div>
   </div>
 
   <div className="md:w-36 w-full flex flex-col items-center">
@@ -205,7 +213,7 @@ function Home() {
     </div>
     <div className="w-6 h-6 rounded-full text-white bg-bluecolor -mt-5 potta-one-regular items-center flex justify-center">04</div>
     <div className="font-bold potta-one-regular text-bluecolor text-sm text-center">Confirmation</div>
-    <div className='text-center md:text-lg text-xs'>Lorem ipsum dolor sit amet consectetur. sit amet consectetur</div>
+    <div className='text-center text-xs'>Automatic Invoice is generated</div>
   </div>
 </div>
 
@@ -226,10 +234,10 @@ function Home() {
         <div>
         <div className='md:text-5xl text-4xl text-left text-green-500 potta-one-regular'>"</div>
         <div className='md:text-lg text-sm -mt-3'>
-        Lorem ipsum dolor sit amet consectetur. 
-          In adipiscing aliquet nullam accumsan 
-          fermentum eleifend hendrerit. Ultrices 
-          et sagittis lectus pulvinar nam.
+        AppyChild has been a fantastic experience for our family. 
+        The staff is incredibly caring and attentive, and my daughter 
+        has thrived in their nurturing environment. 
+        I love the daily updates and the variety of activities that keep her engaged and happy."
         </div>
         <div className='md:text-5xl text-4xl  text-green-500 potta-one-regular text-right'>"</div>
 
@@ -238,7 +246,7 @@ function Home() {
         </div>
           <div className='w-1/3 flex flex-col items-center'>
           <div>
-          <img src={staffuser} />
+          <img src={testimonyimage} />
           <div className='potta-one-regular'>-Lisa</div>
 
           </div>
@@ -257,10 +265,12 @@ function Home() {
         <div>
         <div className='md:text-5xl text-4xl text-left text-green-500 potta-one-regular'>"</div>
         <div className='md:text-lg text-sm -mt-3'>
-        Lorem ipsum dolor sit amet consectetur. 
-          In adipiscing aliquet nullam accumsan 
-          fermentum eleifend hendrerit. Ultrices 
-          et sagittis lectus pulvinar nam.
+        "AppyChild is more than just a daycare; 
+        it’s a second home for our child.
+         The educators are warm and genuinely 
+        care about each child’s development. 
+        We’ve seen remarkable growth in our daughter’s 
+        social skills and confidence."
         </div>
         <div className='md:text-5xl text-4xl  text-green-500 potta-one-regular text-right'>"</div>
 
@@ -295,7 +305,8 @@ function Home() {
 
   </div>
   <div className='w-full px-5 py-5'>
- <div className="bg-bgcream md:h-128 h-256 bg-cover w-full bg-no-repeat">
+ <div className="bg-bgcream md:h-128 h-256 bg-cover w-full flex flex-col items-center bg-no-repeat">
+  <div className='md:w-1/2 w-full'>
  <div className="potta-one-regular text-2xl md:text-4xl text-center pt-16 text-bluecolor">Get in touch</div>
  <div className="text-center md:text-xl  text-sm fredoka w-full px-5">Read reviews from our clients and see what they have to say about us</div>
  <ThemeProvider theme={theme}>
@@ -355,7 +366,7 @@ function Home() {
 
 
  </div>
-     
+     </div>
 
   </div>
   <Footer/>

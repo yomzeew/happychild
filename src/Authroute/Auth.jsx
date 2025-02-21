@@ -18,6 +18,16 @@ export const AuthProvider = ({ children }) => {
     navigate('/dashboard');
   };
 
+  const loginAdmin = (token) => {
+    const expiresIn = 3600; // Token validity in seconds (e.g., 1 hour)
+    const expirationTime = new Date().getTime() + expiresIn * 1000;
+    localStorage.setItem('token', token);
+    localStorage.setItem('tokenExpiration', expirationTime.toString()); // Store as string
+    setIsAuthenticated(true);
+    setTokenExpiration(expirationTime);
+    navigate('/dashboardadmin');
+  };
+
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('tokenExpiration');
@@ -53,7 +63,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout,loginAdmin }}>
       {children}
     </AuthContext.Provider>
   );
