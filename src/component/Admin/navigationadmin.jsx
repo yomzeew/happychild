@@ -5,6 +5,7 @@ import logouticon from '../images/logouticon.svg'
 import websiteicon from '../images/websiteicon.svg'
 import calendaricon from '../images/calendaricon.svg'
 import { DatabaseOutlined, SettingOutlined } from "@ant-design/icons"
+import { useAuth } from "../../Authroute/Auth"
 
 export const NavigationsAdmin=(props)=>{
 const [activelink,setactivelink]=useState('dashboard')
@@ -15,6 +16,7 @@ const handlenavclick=(value)=>{
     props.handleshowpage(value)
 
 }
+const {logout}=useAuth()
     return(
         <div>
            <a href="#" onClick={()=>handlenavclick('dashboard')}><div className={`flex gap-3 items-center ${activelink==='dashboard'?activelinkstyle:defaultlinkstyle}  px-3 py-3 rounded-lg`}>
@@ -42,11 +44,13 @@ const handlenavclick=(value)=>{
                     
                 </div>
                 </a>
+                <a href="#" onClick={()=>logout()}>
                 <div className="flex gap-3 items-center px-3 py-3 rounded-lg mt-5">
                     <img src={logouticon} />
                     <div className="fredoka md:text-sm text-red-500 text-xs">Logout</div>
                     
                 </div>
+                </a>
         </div>
     )
 
@@ -60,6 +64,7 @@ export const NavigationsmobileAdmin=(props)=>{
         props.handleshowpage(value)
     
     }
+    const {logout}=useAuth()
         return(
             <div className="relative z-50">
                     <a href="#" onClick={()=>handlenavclick('dashboard')}><div className={`flex gap-3 items-center ${activelink==='dashboard'?activelinkstyle:defaultlinkstyle}  px-3 py-3 rounded-lg`}>
@@ -86,11 +91,13 @@ export const NavigationsmobileAdmin=(props)=>{
                     
                 </div>
                 </a>
+                <a href="#" onClick={()=>logout()}>
                 <div className="flex gap-3 items-center px-3 py-3 rounded-lg mt-5">
                     <img src={logouticon} />
                     {props.onchangewidth &&<div className="fredoka md:text-sm text-red-500 text-xs">Logout</div>}
                     
                 </div>
+                </a>
 
                 </div>
          

@@ -3,13 +3,16 @@ import {
   addbankdetailsUrl, 
   addnumberofkidsperhourUrl, 
   addrateUrl, 
+  changepasswordUrl, 
   getallbookUrl, 
   getallchildUrl, 
   getallrecordUrl, 
   getbankdetailsUrl, 
   getnofkidsperhourUrl, 
   getrateAll, 
-  sendemailInvoice
+  sendemailInvoice,
+  sendotpemailurl,
+  verifysentOtpUrl
 } from "../endpoints/apiurl";
 
 const token = localStorage.getItem('token');
@@ -167,7 +170,9 @@ export const getAllchildrec = async () => {
         "authorization": `Bearer ${token}`
       }
     });
+    console.log('ok',response.data.data)
     return {
+      
       success: true,
       message: response.data.message,
       data: response.data.data
@@ -216,6 +221,70 @@ export const sendemailfunc = async (data,setShowLoader) => {
     return {
       success: false,
       message: (error.response && error.response.data && error.response.data.message) || "Login failed",
+    };
+  }finally{
+    setShowLoader(false)
+  }
+};
+
+export const emailverifyfunc = async (data,setShowLoader) => {
+  try {
+    setShowLoader(true)
+    const response = await axios.post(sendotpemailurl, data, {
+      headers: {
+        "authorization": `Bearer ${token}`
+      }
+    });
+    return {
+      success: true,
+      message: response.data.message,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: (error.response && error.response.data && error.response.data.message) || "Email Not Register"
+    };
+  }finally{
+    setShowLoader(false)
+  }
+};
+export const otpverifyfunc = async (data,setShowLoader) => {
+  try {
+    setShowLoader(true)
+    const response = await axios.post(verifysentOtpUrl, data, {
+      headers: {
+        "authorization": `Bearer ${token}`
+      }
+    });
+    return {
+      success: true,
+      message: response.data.message,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: (error.response && error.response.data && error.response.data.message) || "Otp not Sent",
+    };
+  }finally{
+    setShowLoader(false)
+  }
+};
+export const changepasswordfunc = async (data,setShowLoader) => {
+  try {
+    setShowLoader(true)
+    const response = await axios.post(changepasswordUrl, data, {
+      headers: {
+        "authorization": `Bearer ${token}`
+      }
+    });
+    return {
+      success: true,
+      message: response.data.message,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: (error.response && error.response.data && error.response.data.message) || "Password Not Changed",
     };
   }finally{
     setShowLoader(false)

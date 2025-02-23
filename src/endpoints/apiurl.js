@@ -7,6 +7,7 @@ export const emailstatus=`${BaseURi}/emailstatus`
 export const sendotp=`${BaseURi}/sendotp`
 export const verifyotp=`${BaseURi}/verifyotp`
 export const userdetails=`${BaseURi}/userdetails`
+
 export const registerchild=`${BaseURi}/childadd`
 export const getchilddata=`${BaseURi}/childrecord`
 export const getchilddelete=`${BaseURi}/childremove`
@@ -15,6 +16,7 @@ export const gethour=`${BaseURi}/getavailablehour`
 export const book=`${BaseURi}/insertbook`
 export const getinvoiceid=`${BaseURi}/getbook`
 export const getbookbyparentid=`${BaseURi}/getbookbyparentid`
+
 export const loginadmin=`${BaseURi}/adminlogin`
 export const getnofkidsperhourUrl=`${BaseURi}/getnofkidsperhour`
 export const addnumberofkidsperhourUrl=`${BaseURi}/addnumberofkidsperhour`
@@ -29,3 +31,7 @@ export const getallchildUrl=`${BaseURi}/childallrec`
 export const getallrecordUrl=`${BaseURi}/getalldata`
 export const updatepaymentUrl=`${BaseURi}/updatepayment`
 export const sendemailInvoice=`${BaseURi}/sendemail`
+
+export const sendotpemailurl=`${BaseURi}/sendotpEmail`
+export const verifysentOtpUrl=`${BaseURi}/verifysendotp`
+export const changepasswordUrl=`${BaseURi}/changepassword`

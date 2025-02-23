@@ -4,10 +4,14 @@ import profileicon from '../images/profileicon.svg'
 import logouticon from '../images/logouticon.svg'
 import websiteicon from '../images/websiteicon.svg'
 import calendaricon from '../images/calendaricon.svg'
+import { useAuth } from "../../Authroute/Auth"
+
 export const Navigations=(props)=>{
 const [activelink,setactivelink]=useState('dashboard')
 const activelinkstyle="bg-blue-300"
 const defaultlinkstyle="bg-slate-300"
+const { logout } = useAuth()
+
 const handlenavclick=(value)=>{
     setactivelink(value)
     props.handleshowpage(value)
@@ -39,11 +43,13 @@ const handlenavclick=(value)=>{
                     
                 </div>
                 </a>
+                <a href="#" onClick={()=>logout()}>
                 <div className="flex gap-3 items-center px-3 py-3 rounded-lg mt-5">
                     <img src={logouticon} />
                     <div className="fredoka md:text-sm text-red-500 text-xs">Logout</div>
                     
                 </div>
+                </a>
         </div>
     )
 
@@ -52,6 +58,8 @@ export const Navigationsmobile=(props)=>{
     const [activelink,setactivelink]=useState('dashboard')
     const activelinkstyle="bg-blue-300"
     const defaultlinkstyle="bg-slate-300"
+
+    const { logout } = useAuth()
     const handlenavclick=(value)=>{
         setactivelink(value)
         props.handleshowpage(value)
@@ -83,11 +91,13 @@ export const Navigationsmobile=(props)=>{
                     
                 </div>
                 </a>
+                <a href="#" onClick={()=>logout()}>
                 <div className="flex gap-3 items-center px-3 py-3 rounded-lg mt-5">
                     <img src={logouticon} />
                     {props.onchangewidth &&<div className="fredoka md:text-sm text-red-500 text-xs">Logout</div>}
                     
                 </div>
+                </a>
 
                 </div>
          

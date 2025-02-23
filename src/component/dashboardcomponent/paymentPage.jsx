@@ -64,15 +64,14 @@ useEffect(()=>{
         const days=patternschedule
         const startdate=convertDate(checkin)
         const data= {invoiceid,startdate,enddate,days}
-        setshowPayment(false)
-        //  const response=await sendemailfunc(data,setShowLoader)
-        //         if(response.success){
-        //             alert('Check your Email')
-        //             setshowPayment(false)
-        //         }
-        //         else{
-        //             console.log(response.message)
-        //         }
+         const response=await sendemailfunc(data,setShowLoader)
+                if(response.success){
+                    alert('Check your Email')
+                    setshowPayment(false)
+                }
+                else{
+                    console.log(response.message)
+                }
     }
     return(
         <div className="w-full flex justify-center">

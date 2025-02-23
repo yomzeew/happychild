@@ -3,9 +3,11 @@ import OtpComponent from "./dashboardcomponent/otpComponent";
 import Loader from "./preloader/loader";
 import { TextField } from "@mui/material";
 import Statusbar from "./modals/statusbar";
+import { changepasswordfunc, emailverifyfunc, otpverifyfunc } from "../fetchdata/fetchdata";
 
 const ForgetPassword = () => {
     const [email, setEmail] = useState('')
+    const [otp,setotp]=useState('')
     const [showOtp, setShowotp] = useState(false)
     const [showemail,setShowemail]=useState(true)
     const [password,setpassword]=useState('')
@@ -15,7 +17,9 @@ const ForgetPassword = () => {
     const [preloader,setPreloader]=useState(false)
     const [errormsg,setErrormsg]=useState('')
     const [passworderror,setpassworderror]=useState('')
+    const [confirmerror,setconfirmerror]=useState('')
     const [showSuccessmodal,setShowSuccessmodal]=useState(false)
+    const [showLoader,setShowLoader]=useState('')
 
     const EmailVerify = async () => {
         return { success: true }; // Example return value
@@ -27,8 +31,13 @@ const ForgetPassword = () => {
     
     const handlesubmit = async () => {  // <-- Make this function async
         if (showemail) {
+            if(!email){
+                alert('Enter Email Address')
+                return
+            }
             try {
-                const { success } = await EmailVerify();  // <-- Await the async function
+                const data={email}
+                const { success } = await emailverifyfunc(data,setShowLoader);  // <-- Await the async function
                 console.log(success);
                 if (success) {
                     console.log('ok');
@@ -41,7 +50,16 @@ const ForgetPassword = () => {
         }
         if(showOtp){
             try {
-                const { success } = await OtpVerify();  // <-- Await the async function
+                if(!email){
+                    alert('Enter Email Address')
+                    return
+                }
+                if(!otp){
+                    alert("Enter Otp Numer")
+                    return
+                }
+                const data={email,otp}
+                const { success } = await otpverifyfunc(data,setShowLoader);  // <-- Await the async function
                 console.log(success);
                 if (success) {
                     console.log('ok');
@@ -54,8 +72,31 @@ const ForgetPassword = () => {
             }
         }
         if(showPassword){
-            setShowSuccessmodal(true)
-            console.log('ok')
+            try {
+                if(!email){
+                    alert('Enter Email Address')
+                    return
+                }
+                if(!password){
+                    alert("Enter Passwword")
+                    return
+                }
+                if(password!==confirm){
+                    setErrormsg('Password Not Match')
+                    return
+                }
+                const newpassword=password
+                const data={email,newpassword}
+                const { success } = await changepasswordfunc(data,setShowLoader);  // <-- Await the async function
+                console.log(success);
+                if (success) {
+                    console.log('ok');
+                    setShowSuccessmodal(true)
+                    
+                }
+            } catch (error) {
+                console.error("Error verifying email:", error);
+            }
         }
     };
     
@@ -94,7 +135,7 @@ const ForgetPassword = () => {
                             </div>}
                             {showOtp &&<div className='md:w-1/2 mt-10 w-5/6'>
                                 <div className='text-red-500 text-sm mb-3 text-center'>{errormsg}</div>
-                                <OtpComponent />
+                                <OtpComponent onChange={(value)=>setotp(value)} otp={otp} />
 
                             </div>}
                             {showPassword &&
@@ -121,15 +162,15 @@ const ForgetPassword = () => {
                                 <div className='text-red-500 text-sm mb-3 text-center'>{errormsg}</div>
                                 <TextField
                                     label="Confirm Password"
-                                    value={password}
+                                    value={confirm}
                                     onChange={(event) => {
-                                        setpassword(event.target.value);
+                                        setconfirm(event.target.value);
                                     }}
                                     fullWidth
                                     type='password'
-                                    error={passworderror}
+                                    error={confirmerror}
                                     id="outlined-error-helper-text2"
-                                    helperText={passworderror ? 'Password must not less than 6 character.' : ''}
+                                    helperText={confirmerror ? 'Password must not less than 6 character.' : ''}
                                     autoComplete='off'
 
                                 />
@@ -138,7 +179,7 @@ const ForgetPassword = () => {
                             </> 
                             }
                             <div className='md:w-1/2 mt-5  w-5/6'>
-                                <button onClick={handlesubmit} className="px-8 w-full text-white h-12 active:bg-blue-900 hover:bg-blue-700 bg-bluecolor rounded-xl shadow-md shadow-blue-950">{showPassword?'Submit':'Next'}</button>
+                                <button disabled={showLoader} onClick={handlesubmit} className="px-8 w-full text-white h-12 active:bg-blue-900 hover:bg-blue-700 bg-bluecolor rounded-xl shadow-md shadow-blue-950">{showPassword?'Submit':'Next'}</button>
                             </div>
 
                         </div>
