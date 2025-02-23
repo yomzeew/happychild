@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { getinvoiceid } from "../../endpoints/apiurl";
+import { sendemailfunc } from "../../fetchdata/fetchdata";
+import axios from "axios";
 
-const Paymentpage=({invoiceid})=>{
+const Paymentpage=({invoiceid,setshowPayment})=>{
     const[totalmaount,settotalmaount]=useState('')
     const [checkin,setcheckin]=useState('')
     const [patternschedule,setpatternschedule]=useState('')
     const [enddate,setenddate]=useState('')
-
+    const [showloader,setShowLoader]=useState(false)
+    const convertDate = (dateTimeStr) => {
+        return new Date(dateTimeStr).toISOString().split('T')[0];
+      };
+      
     const getNextDate = (dateInput, days) => {
         if(!dateInput && !days){
             return
@@ -19,7 +25,8 @@ const Paymentpage=({invoiceid})=>{
         return date.toISOString().split("T")[0];
       };
     const gethandledata=async()=>{
-        const payload={invoiceid}
+        const payload={id:invoiceid}
+        console.log(invoiceid)
         try {
             const token=localStorage.getItem('token')
             if (!token) {
@@ -32,15 +39,13 @@ const Paymentpage=({invoiceid})=>{
                 }
             });
             const data=response.data.data[0]
+            console.log(response.data.data[0])
             settotalmaount(data.amount)
-            setinvoiceidformat('000'+data.id)
-            setcheckin(data.check_in)
-            getNextDate(data.check_in,data.schedulepattern)
-
-            settimehours(data.timeslots.length)
-            const gettimerange=convertTo12HourFormat(data.timeslots)
+          
+            setcheckin(data.checkin)
+            const getdate=await getNextDate(data.checkin,data.schedulepattern)
+            setenddate(getdate)
             setpatternschedule(data.schedulepattern)
-            console.log(response.data)
 
 
     }
@@ -52,22 +57,33 @@ const Paymentpage=({invoiceid})=>{
 }
 useEffect(()=>{
     gethandledata()
-    
 },[])
-    const SendEmail=()=>{ 
-        const days=patternschedule
-        const data= {invoiceid,startdate,enddate,days}
 
+    const SendEmail=async()=>{ 
+        
+        const days=patternschedule
+        const startdate=convertDate(checkin)
+        const data= {invoiceid,startdate,enddate,days}
+        setshowPayment(false)
+        //  const response=await sendemailfunc(data,setShowLoader)
+        //         if(response.success){
+        //             alert('Check your Email')
+        //             setshowPayment(false)
+        //         }
+        //         else{
+        //             console.log(response.message)
+        //         }
     }
     return(
         <div className="w-full flex justify-center">
             <div className='w-72 md:w-105  bg-slate-100 rounded-2xl px-3 py-5'>
-                <div>You are Make Payment for {}days</div>
-                <div>From 12 June,2024</div>
-                <div>End 26 June,2024</div>
+                <div>You are Make Payment for {patternschedule}days</div>
+                <div>From {convertDate(checkin)}</div>
+                <div>End {enddate}</div>
                 <div>Total Amount:{totalmaount}</div>
                 <div className="text-center font-bold fredoka">Check Your Email for Payment details</div>
-                <div className="flex justify-center"><div className="bg-bluecolor rounded-2xl text-white w-8 h-8 items-center flex justify-center">Ok</div></div>
+                <div className="flex justify-center">
+                    <div onClick={SendEmail} className="bg-bluecolor cursor-pointer rounded-2xl text-white w-8 h-8 items-center flex justify-center">Ok</div></div>
 
                 </div>
                 </div>

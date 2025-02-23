@@ -82,7 +82,8 @@ useEffect(()=>{
 
     }
     const statusbarPropsupdate={
-        invoiceid:invoiceid
+        invoiceid:invoiceid,
+        setshowPayment:(value)=>setshowPayment(value)
     }
     return (
         <>
