@@ -28,9 +28,9 @@ function Header({overlay}) {
      <div className=" w-2/3">
      <div className=" flex flex-row justify-between items-center ">
       <div><a href="/">Home</a></div>
-      <div><a href="/">About Us</a></div>
-      <div><a href="/">Services</a></div>
-      <div><a href="/">Contact Us</a></div>
+      <div><a className='hover:border-b-bluecolor border-b-2 active:border-bluecolor' href="/aboutus">About Us</a></div>
+      <div><a className='hover:border-b-bluecolor border-b-2 active:border-bluecolor' href="/services">Services</a></div>
+      <div><a className='hover:border-b-bluecolor border-b-2 active:border-bluecolor' href="/contactus">Contact Us</a></div>
       <a href='/started'><button className="px-8 text-white h-12 active:bg-blue-900 hover:bg-blue-700 bg-bluecolor rounded-xl">Get Started</button></a>
       
 

@@ -10,7 +10,7 @@ function Footer() {
       <div className='w-full flex justify-center'> <img src={logo} className='h-auto w-16 object-contain' /></div>
                 <div className='potta-one-regular text-lg w-full flex justify-center'>AppyChild</div>
                 <div className='text-sm md:text-left text-center md:mt-0 mt-1'>
-                +44-77766344406
+                +44-7776634406
                 </div>
                 <div className='text-sm md:text-left text-center md:mt-0 mt-1'>
                   info@appychild.uk
