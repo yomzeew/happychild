@@ -4,6 +4,7 @@ import {
   addnumberofkidsperhourUrl, 
   addrateUrl, 
   changepasswordUrl, 
+  contactCenterUrl, 
   getallbookUrl, 
   getallchildUrl, 
   getallrecordUrl, 
@@ -277,6 +278,23 @@ export const changepasswordfunc = async (data,setShowLoader) => {
         "authorization": `Bearer ${token}`
       }
     });
+    return {
+      success: true,
+      message: response.data.message,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: (error.response && error.response.data && error.response.data.message) || "Password Not Changed",
+    };
+  }finally{
+    setShowLoader(false)
+  }
+};
+export const sendMessagafunc = async (data,setShowLoader) => {
+  try {
+    setShowLoader(true)
+    const response = await axios.post(contactCenterUrl, data);
     return {
       success: true,
       message: response.data.message,

@@ -11,15 +11,15 @@ const  InvoicePayment=({showpagepayment,invoiceid})=>{
     const [parentname,setparentname]=useState('')
     const [childname,setchildname]=useState('')
     const [totalmaount, settotalmaount]=useState(0)
+    const [rate,setrate]=useState(0)
     const [paymentstatus,setpaymentstatus]=useState('')
     const [invoiceidformat,setinvoiceidformat]=useState('')
     const [invoicedate,setinvoicedate]=useState('')
     const [timehours,settimehours]=useState('')
     const [TimeRange, setTimeRange]=useState('')
-    const [paymentStatus,setpaymentStatus]=useState('')
-    const [patternschedule,setpatternschedule]=useState('')
+    const [paymentStatus,setpaymentStatus]=useState(0)
+    const [patternschedule,setpatternschedule]=useState(0)
     const [showPayment,setshowPayment]=useState(false)
-    console.log(invoiceid)
     const currentRef=useRef(null)
     const gethandledata=async()=>{
         const payload={id:invoiceid}
@@ -38,15 +38,17 @@ const  InvoicePayment=({showpagepayment,invoiceid})=>{
             setchildname(data.child_fullname)
             setparentname(data.fullname)
             settotalmaount(data.amount)
+            setrate(data.rate)
             setinvoiceidformat('000'+data.id)
-            
-            settimehours(data.timeslots.length)
-            const gettimerange=convertTo12HourFormat(data.timeslots)
+            const gethours=JSON.parse(data.timeslots)
+            settimehours(gethours.length)
+            const gettimerange=convertTo12HourFormat(gethours)
             setTimeRange(gettimerange)
             setinvoicedate(convertDateFormat(data.created_at))
-            setpaymentStatus(data.payment_status)
-            setpatternschedule(data.schedulepattern)
-            console.log(response.data)
+            setpaymentStatus(JSON.parse(data.payment_status))
+            console.log(JSON.parse(data.schedulepattern))
+            setpatternschedule(JSON.parse(data.schedulepattern))
+            
 
 
     }
@@ -56,7 +58,8 @@ const  InvoicePayment=({showpagepayment,invoiceid})=>{
 }
 useEffect(()=>{
     gethandledata()
-},[])
+    console.log(patternschedule)
+},[ ])
     const downloadInvoice = async () => {
         const element = currentRef.current;
         const canvas = await html2canvas(element, {
@@ -105,7 +108,7 @@ useEffect(()=>{
             <div ref={currentRef} className=" px-5 py-5 w-full fredoka bg-slate-100 ">
             <div className="font-thin text-2xl text-bluecolor">Booking Invoice</div>
             <div className="flex justify-between mt-5 items-center">
-            <div><img src={logo} className='object-fit h-12 w-12'/><p className='potta-one-regular text-bluecolor'>HappyChild</p></div>
+            <div><img src={logo} className='object-fit h-12 w-12'/><p className='potta-one-regular text-bluecolor'>AppyChild</p></div>
                 <div>
                 <div>Invoice Number</div>
                 <div>#{invoiceidformat}</div>
@@ -139,7 +142,7 @@ useEffect(()=>{
                    {timehours}
                 </div>
                 <div className='bg-bluecolor w-full flex justify-center h-8 md:text-sm text-xs items-center text-white '>
-                    2.1 GBP
+                    {rate} GBP
                 </div>
                 <div className='bg-bluecolor w-full flex justify-center h-8 md:text-sm text-xs items-center text-white '>
                     {patternschedule} days

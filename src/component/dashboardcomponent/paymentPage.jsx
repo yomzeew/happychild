@@ -10,8 +10,11 @@ const Paymentpage=({invoiceid,setshowPayment})=>{
     const [enddate,setenddate]=useState('')
     const [showloader,setShowLoader]=useState(false)
     const convertDate = (dateTimeStr) => {
-        return new Date(dateTimeStr).toISOString().split('T')[0];
-      };
+        if (!dateTimeStr) return "Invalid Date"; // Handle undefined/null values
+        const date = new Date(dateTimeStr);
+        if (isNaN(date.getTime())) return "Invalid Date"; // Handle invalid date formats
+        return date.toISOString().split('T')[0];
+    };
       
     const getNextDate = (dateInput, days) => {
         if(!dateInput && !days){
